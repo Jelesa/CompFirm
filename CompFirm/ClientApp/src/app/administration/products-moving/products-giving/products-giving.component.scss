@@ -1,0 +1,30 @@
+:host {
+  .button-delete {
+    cursor: pointer;
+  }
+
+  .buttons-wrapper {
+    display: flex;
+
+    img {
+      width: 15px;
+    }
+  }
+
+  .data {
+    margin-top: 17px;
+
+    table {
+      width: 100%;
+
+      th, td {
+        border: 1px solid;
+        padding: 5px;
+      }
+    }
+
+    .button {
+      margin-top: 17px;
+    }
+  }
+}

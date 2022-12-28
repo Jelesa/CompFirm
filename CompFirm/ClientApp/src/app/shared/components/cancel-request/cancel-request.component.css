@@ -1,0 +1,25 @@
+.buttons-wrapper {
+  display: flex;
+  margin-top: 15px;
+}
+
+.button {
+  cursor: pointer;
+  background: #ccc;
+  padding: 10px;
+  width: 64px;
+  margin: 0 10px;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  text-align: center;
+}
+
+  .button:hover {
+    background: #bbb;
+  }
+
+.success-deleted {
+  display: flex;
+  justify-content: center;
+  color: green;
+}

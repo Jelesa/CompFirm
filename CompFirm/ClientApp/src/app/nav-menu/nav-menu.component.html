@@ -1,0 +1,11 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+    <div class="container menu-container">
+      <a class="navbar-brand" [routerLink]="['/']">CompFirm</a>
+      <div class="d-flex">
+        <app-cart-menu *ngIf="isLoggedIn()"></app-cart-menu>
+        <app-user-menu></app-user-menu>
+      </div>
+    </div>
+  </nav>
+</header>

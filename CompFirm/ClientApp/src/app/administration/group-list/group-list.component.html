@@ -1,0 +1,68 @@
+<div>
+  <h4>Категории</h4>
+
+  <app-loader [isSearch]="isSearch">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Наименование</th>
+          <th>Родительская категория</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of groups">
+          <td>{{item.name}}</td>
+          <td *ngIf="item.parentGroupName">{{item.parentGroupName}}</td>
+          <td *ngIf="!item.parentGroupName">---</td>
+          <td>
+            <div class="buttons-wrapper">
+              <div class="button-edit"
+                   (click)="editGroup(item.id)">
+                <img src="assets/edit.png">
+              </div>
+
+              <div class="button-delete"
+                   (click)="deleteGroup(item.id)">
+                <img src="assets/delete.png">
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </app-loader>
+
+  <div *ngIf="(!groups || groups.length === 0) && !isSearch">
+    <h5>Категорий не нашлось.</h5>
+  </div>
+
+</div>
+
+<div class="button mt"
+     (click)="moveToAdd()">
+  Добавить
+</div>
+
+<div class="pages-buttons-wrapper navigate-pages">
+
+  <div class="button"
+       (click)="prevPage()"
+       [ngClass]="{ 'button-disabled': pageNumber === 0 }">
+    Предыдущая
+  </div>
+
+  <div>
+    Страница {{pageNumber + 1}} из {{pageCount}}
+  </div>
+
+  <div class="button"
+       (click)="nextPage()"
+       [ngClass]="{ 'button-disabled': pageNumber === pageCount - 1 }">
+    Следующая
+  </div>
+
+</div>

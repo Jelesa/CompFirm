@@ -1,0 +1,16 @@
+:host {
+  display: block;
+
+  .formats-buttons {
+    display: flex;
+    margin: 17px 0;
+
+    .button {
+      width: 120px;
+
+      &:not(:first-child) {
+        margin-left: 20px;
+      }
+    }
+  }
+}

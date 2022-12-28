@@ -1,0 +1,51 @@
+:host {
+
+  table {
+    width: 100%;
+    margin-top: 17px;
+
+    tbody {
+
+      tr {
+
+        td {
+          padding-top: 5px;
+          padding-bottom: 5px;
+
+          &:first-child {
+            padding-left: 7px;
+          }
+        }
+      }
+
+      tr:hover {
+        box-shadow: 0px 0px 17px 4px rgba(34, 60, 80, 0.3);
+        border-radius: 30px;
+      }
+
+      tr:not(:last-child) {
+      }
+    }
+  }
+
+  .buttons-wrapper {
+    display: flex;
+
+    img {
+      width: 15px;
+    }
+  }
+
+  .button-edit {
+    cursor: pointer;
+    margin-right: 7px;
+  }
+
+  .button-delete {
+    cursor: pointer;
+  }
+
+  .mt {
+    margin-top: 17px;
+  }
+}

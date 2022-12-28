@@ -1,0 +1,94 @@
+<div>
+  <h5>Оформление возврата товаров</h5>
+  <div class="input-wrapper">
+    <div class="input-name">
+      Дата возврата
+    </div>
+    <div class="input">
+      <input [(ngModel)]="actionDate" />
+    </div>
+  </div>
+
+  <div class="table">
+    <table>
+      <thead>
+        <tr>
+          <th>Товар</th>
+          <th class="count">Количество</th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of getRefunds(); let idx = index">
+          <td>
+            {{p.productName}}
+          </td>
+          <td>{{p.count}}</td>
+          <td>
+            <div class="ch-buttons-wrapper">
+
+              <div class="button-delete"
+                   (click)="delete(idx)">
+                <img src="assets/delete.png">
+              </div>
+
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="addingRefund">
+          <td>
+            <ng-select [(ngModel)]="refunds[refunds.length - 1].productId"
+                       (change)="productChanged($event)">
+              <ng-option *ngFor="let p of products" [value]="p.id">({{p.id}}) {{p.productName}}</ng-option>
+            </ng-select>
+          </td>
+          <td>
+            <input [(ngModel)]="refunds[refunds.length - 1].count" />
+          </td>
+          <td>
+            <div class="ch-buttons-wrapper">
+
+              <div class="button-delete mr"
+                   (click)="acceptRefund()">
+                <img src="assets/accept.svg">
+              </div>
+
+              <div class="button-delete"
+                   (click)="undoRefund()">
+                <img src="assets/delete.png">
+              </div>
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="button"
+         (click)="addRefund()">
+      Добавить
+    </div>
+  </div>
+</div>
+
+<div class="buttons">
+  <div class="button"
+       (click)="cancel()">
+    Отменить
+  </div>
+  <div class="button"
+       (click)="confirm()">
+    Сохранить
+  </div>
+</div>
+
+<div class="success-edited"
+     *ngIf="edited">
+  Создано!
+</div>
+
+<div class="error-text"
+     *ngIf="error">
+  Не удалось выполнить операцию! Проверьте данные или повторите попытку позже!
+</div>

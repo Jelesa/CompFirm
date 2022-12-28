@@ -1,0 +1,66 @@
+<h5>Производители</h5>
+
+<div class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Наименование</th>
+        <th>Единицы измерения</th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let m of characteristics; let idx = index">
+        <td>
+          {{m.name}}
+        </td>
+        <td *ngIf="m.unit">
+          {{m.unit}}
+        </td>
+        <td *ngIf="!m.unit">
+          ---
+        </td>
+        <td>
+          <div class="ch-buttons-wrapper">
+
+            <div class="button-delete"
+                 (click)="delete(m.id)">
+              <img src="assets/delete.png">
+            </div>
+
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="adding">
+        <td>
+          <input [(ngModel)]="addingName" />
+        </td>
+        <td>
+          <input [(ngModel)]="addingUnit" />
+        </td>
+        <td>
+          <div class="ch-buttons-wrapper">
+
+            <div class="button-delete mr"
+                 (click)="acceptAdding()">
+              <img src="assets/accept.svg">
+            </div>
+
+            <div class="button-delete"
+                 (click)="undoAdding()">
+              <img src="assets/delete.png">
+            </div>
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="button"
+       style="margin-top: 17px"
+       (click)="add()">
+    Добавить
+  </div>
+</div>

@@ -1,0 +1,48 @@
+:host {
+  display: block;
+
+  table {
+    width: 100%;
+    margin-top: 17px;
+
+    th, td {
+      padding: 5px;
+      border: 1px solid;
+    }
+  }
+
+  .buttons-wrapper {
+    display: flex;
+
+    img {
+      width: 15px;
+    }
+  }
+
+  .button-edit {
+    cursor: pointer;
+    margin-right: 7px;
+  }
+
+  .button-delete {
+    cursor: pointer;
+  }
+
+  .ch-buttons-wrapper {
+    display: flex;
+    justify-content: space-around;
+
+    img {
+      width: 15px;
+    }
+
+    .button-edit {
+      cursor: pointer;
+      margin-right: 7px;
+    }
+
+    .button-delete {
+      cursor: pointer;
+    }
+  }
+}

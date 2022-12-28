@@ -1,0 +1,65 @@
+<app-loader [isSearch]="isLoading">
+
+  <div>
+    <div>Администрирование</div>
+  </div>
+
+  <div class="button"
+       (click)="goToRequests()">
+    Заказы
+  </div>
+
+  <div class="button"
+       (click)="goToReceipts()">
+    Поступления товаров
+  </div>
+
+  <div class="button"
+       (click)="goToGivings()">
+    Выдачи
+  </div>
+
+  <div class="button"
+       (click)="goToRefunds()">
+    Возвраты
+  </div>
+
+  <div class="button"
+       (click)="goToReports()">
+    Отчеты
+  </div>
+
+  <hr />
+
+  <div>
+    <div>Номенклатура</div>
+  </div>
+
+  <div class="button"
+       (click)="goToProductList()">
+    Товары и услуги
+  </div>
+
+  <div class="button"
+       (click)="goToGroupList()">
+    Категории
+  </div>
+
+  <div class="button"
+       (click)="goToCharacteristics()">
+    Характеристики товаров
+  </div>
+
+  <div class="button"
+       (click)="goToManufacturers()">
+    Производители
+  </div>
+
+  <hr />
+
+  <div class="button"
+       (click)="goToCabinet()">
+    Вернуться в кабинет
+  </div>
+
+</app-loader>

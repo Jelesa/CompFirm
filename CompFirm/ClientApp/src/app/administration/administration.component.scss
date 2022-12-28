@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  padding-top: 20px;
+
+  .card-wrapper,
+  .content-wrapper {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+    padding: 17px;
+  }
+
+  .card-container {
+    width: 30%;
+  }
+
+  .content-container{
+    width: calc(70% - 20px);
+    margin-left: 20px;
+  }
+}

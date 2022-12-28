@@ -1,0 +1,19 @@
+<div>
+  Личный кабинет
+</div>
+
+<div *ngIf="isLoggedIn()">
+
+  <div>
+    <a href="/cabinet">Перейти в личный кабинет</a>    
+  </div>
+
+  <div>
+    <a href="#" (click)="logOut()">Выйти</a>
+  </div>
+
+</div>
+
+<div *ngIf="!isLoggedIn()">
+  <div class="link" (click)="goToLogin()">Войти в личный кабинет</div>
+</div>

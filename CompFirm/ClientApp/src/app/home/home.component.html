@@ -1,0 +1,155 @@
+<div class="container form-container">
+  <div class="filters-wrapper">
+    <div class="filters">
+      <div class="filters-item">
+        <div>Категория</div>
+        <div>
+          <input type="radio"
+                 id='radio_group_000'
+                 name="groupId"
+                 value="-999"
+                 (click)="changeSubCategories(-999)"
+                 checked />
+          <label for="radio_group_000">
+            Все
+          </label>
+        </div>
+
+        <div *ngFor="let item of groups">
+          <input type="radio"
+                 id='radio_group_{{item.id}}'
+                 name="groupId"
+                 value="{{item.id}}"
+                 (click)="changeSubCategories(item.id)" />
+          <label for="radio_group_{{item.id}}">
+            {{item.name}}
+          </label>
+        </div>
+      </div>
+
+      <div class="filters-item"
+           *ngIf="subGroups && subGroups.length > 0">
+        <div>Подкатегория</div>
+
+        <div>
+          <input type="radio"
+                 id='radio_subgroup_000'
+                 name="subGroupId"
+                 value="-999"
+                 (click)="setSubGroup(-999)"
+                 checked />
+          <label for="radio_subgroup_000">
+            Все
+          </label>
+        </div>
+
+        <div *ngFor="let item of subGroups">
+          <input type="radio"
+                 id='radio_subgroup_{{item.id}}'
+                 name="subGroupId"
+                 value="{{item}}"
+                 (click)="setSubGroup(item.id)" />
+          <label for="radio_subgroup_{{item.id}}">
+            {{item.name}}
+          </label>
+        </div>
+      </div>
+
+      <div *ngIf="productTypes && productTypes.length > 0">
+        <div class="filters-item">
+          <div>Вид товара</div>
+
+          <div>
+            <input type="radio"
+                   id='product_type_radio_000'
+                   name="productType"
+                   value="-999"
+                   (click)="setProductType('')"
+                   checked />
+            <label for="product_type_radio_000">
+              Все
+            </label>
+          </div>
+
+          <div *ngFor="let item of productTypes; let idx = index">
+            <input type="radio"
+                   id='product_type_radio_{{idx}}'
+                   name="productType"
+                   value="{{item.name}}"
+                   (click)="setProductType(item.name)" />
+            <label for="product_type_radio_{{idx}}">
+              {{item.name}}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="filters-item">
+        <div>
+          Цена
+        </div>
+
+        <div class="input-wrapper">
+          <div class="input-name">
+            От:
+          </div>
+          <div class="input">
+            <input [(ngModel)]="minPrice"
+                   (focusout)="checkMinPrice($event)">
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <div class="input-name">
+            До:
+          </div>
+          <div class="input">
+            <input [(ngModel)]="maxPrice"
+                   (focusout)="checkMaxPrice($event)">
+          </div>
+        </div>
+      </div>
+
+      <div class="filters-item">
+        <div class="button"
+             (click)="startSearch()">
+          Найти
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="result-wrapper">
+    <app-loader [isSearch]="isSearch">
+      <div *ngIf="!!products && products.length > 0; else noData">
+        <div>
+          <app-item-card *ngFor="let p of products"
+                         [product]="p">
+          </app-item-card>
+        </div>
+        <div class="pages-buttons-wrapper navigate-pages">
+          <div class="button"
+               (click)="prevPage()"
+               [ngClass]="{ 'button-disabled': pageNumber === 0 }">
+            Предыдущая
+          </div>
+          <div>
+            Страница {{pageNumber + 1}} из {{pageCount}}
+          </div>
+          <div class="button"
+               (click)="nextPage()"
+               [ngClass]="{ 'button-disabled': pageNumber === pageCount - 1 }">
+            Следующая
+          </div>
+        </div>
+      </div>
+    </app-loader>
+  </div>
+</div>
+
+<ng-template #noData>
+  <div>
+    <h3>По выбранным фильтрам товаров не нашлось.</h3>
+  </div>
+</ng-template>

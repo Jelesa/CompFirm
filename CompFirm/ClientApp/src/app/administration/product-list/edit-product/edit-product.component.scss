@@ -1,0 +1,104 @@
+:host {
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+  }
+
+  .input-name {
+    width: 180px;
+  }
+
+  input {
+    width: 350px;
+  }
+
+  .button {
+    margin-top: 17px;
+  }
+
+  table.ch-table {
+    margin-top: 17px;
+    width: 100%;
+
+    thead {
+      tr {
+        th {
+          border: 1px solid black;
+          padding: 7px;
+        }
+      }
+    }
+
+    tbody {
+      tr:not(:last-child) {
+        td {
+          border: 1px solid black;
+          padding: 7px;
+
+          &:first-child {
+            width: 300px;
+          }
+
+          .ng-select {
+            .ng-select-container {
+              .ng-value-container {
+                min-width: 250px;
+              }
+            }
+          }
+        }
+      }
+
+      tr {
+        td {
+
+          input {
+            max-width: 350px;
+            width: 100%;
+          }
+
+          ::ng-deep ng-select {
+            .ng-select-container {
+              .ng-value-container {
+                min-width: 250px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .ch-buttons-wrapper {
+    display: flex;
+
+    img {
+      width: 15px;
+    }
+
+    .button-edit {
+      cursor: pointer;
+      margin-right: 7px;
+    }
+
+    .button-delete {
+      cursor: pointer;
+    }
+  }
+
+  .buttons-wrapper {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+
+    .button {
+      width: 200px;
+    }
+  }
+
+  .mr {
+    margin-right: 10px;
+  }
+}

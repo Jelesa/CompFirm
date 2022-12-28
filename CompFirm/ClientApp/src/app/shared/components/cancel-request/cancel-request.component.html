@@ -1,0 +1,23 @@
+<div>
+  <span>Вы действительно хотите отменить заказ"<b>{{ getNameGroup() }}</b>"?</span>
+</div>
+<div class="buttons-wrapper">
+  <div class="button"
+       (click)="confirm()">
+    Да
+  </div>
+  <div class="button"
+       (click)="cancel()">
+    Нет
+  </div>
+</div>
+
+<div class="success-deleted"
+     *ngIf="deleted">
+  Заказ отменен!
+</div>
+
+<div class="error-text"
+     *ngIf="error">
+  Не удалось выполнить операцию! Проверьте данные или повторите попытку позже!
+</div>

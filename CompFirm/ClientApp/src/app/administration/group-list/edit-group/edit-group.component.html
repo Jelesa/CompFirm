@@ -1,0 +1,57 @@
+<div>
+  <h4>Редактирование категории</h4>
+
+  <form [formGroup]="formGroup" novalidate>
+    <div class="input-wrapper hidden">
+      <div class="input-name">
+        Идентификатор категории:
+      </div>
+      <div class="input">
+        <input formControlName="id" readonly disabled="true">
+      </div>
+    </div>
+
+    <div class="input-wrapper">
+      <div class="input-name">
+        Наименование категории:
+      </div>
+      <div class="input">
+        <input formControlName="name">
+      </div>
+    </div>
+
+    <div class="input-wrapper" [formGroup]="formGroup">
+      <div class="input-name">
+        Категория-родитель:
+      </div>
+      <ng-select [items]="groups"
+                 bindLabel="name"
+                 bindValue="id"
+                 [clearable]="false"
+                 [searchable]="false"
+                 formControlName="parentGroupId">
+      </ng-select>
+    </div>
+
+    <div class="buttons-wrapper">
+      <div class="button"
+           (click)="confirm()">
+        Сохранить
+      </div>
+      <div class="button"
+           (click)="cancel()">
+        Отменить
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="success-edited"
+     *ngIf="edited">
+  Категория изменена!
+</div>
+
+<div class="error-text"
+     *ngIf="error">
+  Не удалось выполнить операцию! Проверьте данные или повторите попытку позже!
+</div>

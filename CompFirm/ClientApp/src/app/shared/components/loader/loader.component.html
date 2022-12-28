@@ -1,0 +1,9 @@
+<div *ngIf="isSearch">
+  <div class="loader">
+    <img src="/assets/loader.gif" />
+  </div>
+</div>
+
+<div *ngIf="!isSearch">
+  <ng-content></ng-content>
+</div>

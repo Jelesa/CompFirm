@@ -1,0 +1,54 @@
+:host {
+  .form-container {
+    padding-top: 50px;
+    display: flex;
+  }
+
+  .filters-wrapper {
+    width: 30%;
+  }
+
+  .result-wrapper {
+    width: 70%;
+    padding-left: 20px;
+  }
+
+  .filters {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    padding: 17px;
+
+    &-item {
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-left: 5px;
+    }
+  }
+
+  .filters-item:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+  }
+
+  app-item-card:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 7px 0;
+
+    input {
+      border-radius: 5px;
+      width: 100px;
+    }
+  }
+
+  .input-name {
+    width: 45px;
+  }
+}

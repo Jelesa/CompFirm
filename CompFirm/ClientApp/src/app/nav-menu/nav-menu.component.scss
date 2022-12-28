@@ -1,0 +1,38 @@
+:host {
+  .navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  .box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  }
+
+  .menu-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+
+  app-cart-menu {
+    margin-right: 15px;
+  }
+
+  .d-flex {
+    align-items: center;
+  }
+}

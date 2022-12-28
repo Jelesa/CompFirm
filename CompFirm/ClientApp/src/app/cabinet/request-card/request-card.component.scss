@@ -1,0 +1,36 @@
+:host {
+  display: block;
+
+  .move-back {
+    cursor: pointer;
+    background: #d0d0d0;
+  }
+
+  .main-content {
+  }
+
+  .chapter {
+    width: 100%;
+    padding: 7px;
+
+    table {
+      width: 100%;
+
+      tr {
+        th, td {
+          padding: 8px;
+          border: 1px solid #808080;
+        }
+      }
+    }
+  }
+
+  table tr td.total {
+    text-align: right;
+    font-weight: 600;
+  }
+
+  .button {
+      margin-top: 10px;
+  }
+}

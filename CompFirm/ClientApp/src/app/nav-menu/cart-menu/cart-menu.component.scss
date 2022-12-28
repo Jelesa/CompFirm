@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  cursor: pointer;
+
+  .cart {
+    display: flex;
+
+    img {
+      width: 25px;
+    }
+
+    &-header {
+      padding: 5px;
+    }
+  }
+}

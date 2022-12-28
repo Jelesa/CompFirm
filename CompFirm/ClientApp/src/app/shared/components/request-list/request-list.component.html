@@ -1,0 +1,70 @@
+<h4 *ngIf="!adminSearch">Ваши заказы</h4>
+
+<div class="filter">
+  <div class="input-wrapper">
+    <div class="input-name">
+      Номер заказа<span *ngIf="adminSearch"> или имя пользователя</span>:
+    </div>
+    <div class="input">
+      <input [(ngModel)]="searchString">
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Статус заказа:
+    </div>
+    <ng-select [items]="statuses"
+               bindLabel="name"
+               bindValue="id"
+               [clearable]="false"
+               [(ngModel)]="statusId">
+    </ng-select>
+  </div>
+
+  <div class="button"
+       (click)="search()">
+    Найти
+  </div>
+</div>
+<div>
+  <app-loader [isSearch]="isSearch">
+    <table *ngIf="requests && requests.length > 0 && !isSearch">
+      <thead>
+        <tr>
+          <th>Номер заказа</th>
+          <th *ngIf="adminSearch">Имя пользователя</th>
+          <th>Сумма</th>
+          <th>Статус</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of requests"
+            (click)="goToCard(r.number)">
+          <td>Заказ №{{r.number}} от {{getUtcDate(r.creationDate)}}</td>
+          <td *ngIf="adminSearch">{{r.userName}}</td>
+          <td>{{r.sum}}</td>
+          <td>{{r.status}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </app-loader>
+  <div *ngIf="(!requests || requests.length === 0) && !isSearch">
+    <h5>Заказов не найдено.</h5>
+  </div>
+</div>
+<div class="pages-buttons-wrapper navigate-pages">
+  <div class="button"
+       (click)="prevPage()"
+       [ngClass]="{ 'button-disabled': pageNumber === 0 }">
+    Предыдущая
+  </div>
+  <div>
+    Страница {{pageNumber + 1}} из {{pageCount}}
+  </div>
+  <div class="button"
+       (click)="nextPage()"
+       [ngClass]="{ 'button-disabled': pageNumber === pageCount - 1 }">
+    Следующая
+  </div>
+</div>

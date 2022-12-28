@@ -1,0 +1,137 @@
+<div class="form-container">
+  <div class="form-wrapper">
+
+    <div class="form-name">
+      Регистрация
+    </div>
+
+    <form [formGroup]="registrationForm"
+          *ngIf="!userCreated">
+
+      <div class="field">
+        <div class="field-name">
+          Логин<span class="required">*</span>
+        </div>
+        <div class="field-input">
+          <input type="text" formControlName="login" />
+
+          <div class="field-error">
+            <div *ngIf="submitError || _login.invalid && (_login.touched || _login.dirty)">
+              <span *ngIf="_login.errors?.required">Поле обязательно для заполнения!<BR /></span>
+              <span *ngIf="_login.errors?.minlength
+                    || _login.errors?.maxlength
+                    || _login.errors?.pattern">Длина поля должна быть 4 - 20 символов. Разрешены только латинские буквы и цифры!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="field">
+        <div class="field-name">
+          Пароль<span class="required">*</span>
+        </div>
+        <div class="field-input">
+          <input type="password" formControlName="password" />
+
+          <div class="field-error">
+            <div *ngIf="submitError || _password.invalid && (_password.touched || _password.dirty)">
+              <span *ngIf="_password.errors?.required">Поле обязательно для заполнения!<BR /></span>
+              <span *ngIf="_password.errors?.minlength
+                    || _password.errors?.maxlength
+                    || _password.errors?.pattern">Длина поля должна быть 4 - 20 символов. Разрешены только латинские буквы и цифры!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-name">
+          Фамилия<span class="required">*</span>
+        </div>
+        <div class="field-input">
+          <input type="text" formControlName="family" />
+
+          <div class="field-error">
+            <div *ngIf="submitError || _family.invalid && (_family.touched || _family.dirty)">
+              <span *ngIf="_family.errors?.minlength">Слишком мало символов!<BR /></span>
+              <span *ngIf="_family.errors?.maxlength">Слишком много символов!<BR /></span>
+              <span *ngIf="_family.errors?.required">Поле обязательно для заполнения!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-name">
+          Имя<span class="required">*</span>
+        </div>
+        <div class="field-input">
+          <input type="text" formControlName="name" />
+
+          <div class="field-error">
+            <div *ngIf="submitError || _name.invalid && (_name.touched || _name.dirty)">
+              <span *ngIf="_name.errors?.minlength">Слишком мало символов!<BR /></span>
+              <span *ngIf="_name.errors?.maxlength">Слишком много символов!<BR /></span>
+              <span *ngIf="_name.errors?.required">Поле обязательно для заполнения!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-name">
+          Отчество
+        </div>
+        <div class="field-input">
+          <input type="text" formControlName="surname" />
+          <div class="field-error">
+            <div *ngIf="submitError || _surname.invalid && (_surname.touched || _surname.dirty)">
+              <span *ngIf="_surname.errors?.minlength">Слишком мало символов!<BR /></span>
+              <span *ngIf="_surname.errors?.maxlength">Слишком много символов!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-name">
+          Телефон<span class="required">*</span>
+        </div>
+        <div class="field-input">
+          <input type="text" formControlName="phone" />
+
+          <div class="field-error">
+            <div *ngIf="submitError || _phone.invalid && (_phone.touched || _phone.dirty)">
+              <span *ngIf="_phone.errors?.minlength">Слишком мало символов!<BR /></span>
+              <span *ngIf="_phone.errors?.maxlength">Слишком много символов!<BR /></span>
+              <span *ngIf="_phone.errors?.required">Поле обязательно для заполнения!<BR /></span>
+              <span *ngIf="_phone.errors?.pattern">Не верный номер телефона!<BR />(Пример: +79004445533)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-error">
+        <div *ngIf="!!errorMessage">
+          {{ errorMessage }}
+        </div>
+      </div>
+
+      <div class="field field-submit">
+        <button class="submit"
+                (click)="submitRegistration()">
+          Регистрация
+        </button>
+      </div>
+
+    </form>
+
+    <div *ngIf="userCreated"
+         class="success-reg">
+      <div class="success-reg-header">Успешная регистрация!</div>
+      <div class="success-reg-message">Перейти к <a [routerLink]="['/auth/login']">авторизации</a></div>
+    </div>
+
+  </div>
+</div>

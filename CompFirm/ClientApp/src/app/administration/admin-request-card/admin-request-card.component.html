@@ -1,0 +1,95 @@
+<div class="main-content">
+  <app-loader [isSearch]="isLoading">
+    <div *ngIf="!!requestCard">
+      <div class="chapter request-main-info">
+        <h4>Заказ №{{requestCard.number}} от {{getUtcDate(requestCard.creationDate)}}</h4>
+      </div>
+
+      <div class="chapter request-items"
+           *ngIf="requestCard.requestItems && requestCard.requestItems.length > 0">
+        <h4>Список товаров</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Наименование</th>
+              <th>Цена</th>
+              <th>Количество</th>
+              <th>Стоимость</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of requestCard.requestItems">
+              <td>{{item.productName}}</td>
+              <td>{{item.productPrice}}</td>
+              <td>{{item.count}}</td>
+              <td>{{item.productPrice * item.count}}</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="total">
+                Итого:
+              </td>
+              <td>
+                {{requestCard.sum}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chapter request-journal"
+           *ngIf="requestCard.journal && requestCard.journal.length > 0">
+        <h4>История изменений</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Дата</th>
+              <th>Статус</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of requestCard.journal">
+              <td>{{getUtcDateTime(item.statusDate)}}</td>
+              <td>{{item.statusName}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </app-loader>
+</div>
+
+<div *ngIf="!!requestCard">
+  <div *ngIf="requestCard.status !== statusEnum.GIVED
+     && requestCard.status !== statusEnum.CANCELED
+     && requestCard.status !== statusEnum.REJECTED"
+       class="admin-buttons">
+    <div class="button"
+         *ngIf="requestCard.status === statusEnum.CREATED"
+         (click)="statusUpdate(statusEnum.IN_PROCESSING)">
+      Начать обработку
+    </div>
+    <div class="button"
+         *ngIf="requestCard.status === statusEnum.IN_PROCESSING"
+         (click)="statusUpdate(statusEnum.READY_TO_RELEASE)">
+      Готов к выдаче
+    </div>
+    <div class="button"
+         *ngIf="requestCard.status === statusEnum.READY_TO_RELEASE"
+         (click)="statusUpdate(statusEnum.GIVED)">
+      Выдан заказ
+    </div>
+
+    <div *ngIf="requestCard.status !== statusEnum.CANCELED
+     && requestCard.status !== statusEnum.REJECTED"
+         class="button button-cancel"
+         (click)="statusUpdate(statusEnum.REJECTED)">
+      Аннулировать заказ
+    </div>
+  </div>
+</div>
+
+
+<div class="button"
+     (click)="moveToList()">
+  Вернуться к списку
+</div>

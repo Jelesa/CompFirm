@@ -1,0 +1,64 @@
+<div class="form-catalog"
+     [ngClass]="{ 'form-catalog-expanded': expandedBlock }">
+
+  <div class="d-flex">
+
+    <div>
+      <img class="item-photo" [src]="getImageUrl()">
+    </div>
+
+    <div class="form-catalog-info">
+      <div>
+        <div class="header">{{product.name}}</div>
+        <div>Производитель: {{product.manufacturer.name}}</div>
+        <div>Вид товара: {{product.productType}}</div>
+        <div class="form-catalog-price"><label>Цена: </label><label class="price">{{product.price}}</label></div>
+      </div>
+      <div>
+
+        <div class="submit"
+             (click)="addItemToCart()"
+             *ngIf="isLoggedIn() && !itemInCart">
+          Добавить в корзину
+        </div>
+
+        <div *ngIf="itemInCart"
+             class="cart-counter">
+          <div class="counter-loader"
+               *ngIf="cartSending">
+            <img src="/assets/loader.gif" />
+          </div>
+          <div class="counter-button"
+               (click)="decreaseCartCount()">
+            -
+          </div>
+          <div>
+            <input type="text" [(ngModel)]="cartCount" />
+          </div>
+          <div class="counter-button"
+               (click)="increaseCartCount()">
+            +
+          </div>
+        </div>
+
+        <div *ngIf="!isLoggedIn()">
+          Для добавления в корзину требуется авторизация.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="submit" (click)="changeExpanded()">
+    <span *ngIf="!expandedBlock">Показать характеристики</span>
+    <span *ngIf="expandedBlock">Скрыть характеристики</span>
+  </div>
+
+  <div class="marginTop">
+      <div *ngFor="let ch of product.characteristics">
+        {{ch.characteristicName}}: {{ch.value}} {{ch.unit}}
+      </div>
+  </div>
+
+</div>

@@ -1,0 +1,71 @@
+<div class="form-container">
+  <div class="form-wrapper">
+
+    <div class="form-name">
+      Авторизация
+    </div>
+
+    <form [formGroup]="authForm"
+          *ngIf="!loggedIn">
+
+      <div class="field">
+        <div class="field-name">
+          Логин<span class="required">*</span>
+        </div>
+        <div class="field-input">
+          <input type="text" formControlName="login" />
+
+          <div class="field-error">
+            <div *ngIf="submitError || _login.invalid && (_login.touched || _login.dirty)">
+              <span *ngIf="_login.errors?.required">Поле обязательно для заполнения!<BR /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="field">
+        <div class="field-name">
+          Пароль<span class="required">*</span>
+        </div>
+        <div class="field-input">
+          <input type="password" formControlName="password" />
+
+          <div class="field-error">
+            <div *ngIf="submitError || _password.invalid && (_password.touched || _password.dirty)">
+              <span *ngIf="_password.errors?.required">Поле обязательно для заполнения!<BR /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-error">
+        <div *ngIf="authFailed">
+          Данная страница доступна только авторизованным пользователям.
+        </div>
+        <div *ngIf="!!errorMessage">
+          {{ errorMessage }}
+        </div>
+      </div>
+
+      <div class="field field-submit">
+        <button class="submit"
+                (click)="submitLogin()">
+          Авторизация
+        </button>
+      </div>
+
+      <div class="field field-submit">
+        Еще не зарегистрированы? <a [routerLink]="['/auth/sign-up']" [routerLinkActive]="['link-active']">Регистрация</a>
+      </div>
+
+    </form>
+
+    <div *ngIf="loggedIn"
+         class="success-reg">
+      <div class="success-reg-header">Успешная авторизация!</div>
+      <div class="success-reg-message">Вы будете перенаправлены на предыдущую страницу через 3 секунды.</div>
+    </div>
+
+  </div>
+</div>

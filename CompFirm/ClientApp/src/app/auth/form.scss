@@ -1,0 +1,89 @@
+:host {
+
+  .form-container {
+    padding-top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-wrapper {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    padding: 17px;
+    width: 450px;
+  }
+
+  .form-name {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 21px;
+  }
+
+  .required {
+    color: red;
+  }
+
+  .submit {
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    padding: 10px 15px;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    transition: 0.25s;
+  }
+
+  .submit:hover {
+    border: 1px solid #ff6a00;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .5);
+    transition: 0.25s;
+  }
+
+  .field {
+    display: flex;
+
+    &-submit {
+      justify-content: center;
+    }
+
+    &-input {
+      width: 100%;
+
+      input {
+        width: 100%;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+      }
+    }
+
+    &-name {
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    &-error {
+      display: flex;
+      justify-content: center;
+      color: red;
+      text-align: center;
+      font-size: 12px;
+      height: 36px;
+      margin-top: 3px;
+    }
+  }
+
+  .success-reg {
+      text-align: center;
+
+      &-header {
+          font-size: 18px;
+      }
+
+      &-message {
+          margin-top: 7px;
+      }
+  }
+}

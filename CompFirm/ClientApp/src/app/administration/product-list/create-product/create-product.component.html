@@ -1,0 +1,169 @@
+<div *ngIf="product && groups">
+  <div class="input-wrapper">
+    <div class="input-name">
+      Наименование товара:
+    </div>
+    <div class="input">
+      <input [(ngModel)]="product.name">
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Цена:
+    </div>
+    <div class="input">
+      <input [(ngModel)]="product.price">
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Изображение:
+    </div>
+    <div class="input">
+      <input [(ngModel)]="product.imageUrl">
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Вид продукта:
+    </div>
+    <div class="input">
+      <input [(ngModel)]="product.productType">
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Категория товара:
+    </div>
+    <ng-select [items]="groups"
+               bindLabel="name"
+               bindValue="id"
+               [clearable]="false"
+               [(ngModel)]="product.group.id">
+    </ng-select>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Производитель:
+    </div>
+    <ng-select [items]="manufacturers"
+               bindLabel="name"
+               bindValue="id"
+               [clearable]="false"
+               [searchable]="false"
+               [(ngModel)]="product.manufacturer.id">
+    </ng-select>
+  </div>
+
+  <div>
+    <table class="ch-table">
+      <thead>
+        <tr>
+          <th>
+            Наименование
+          </th>
+          <th>
+            Значение
+          </th>
+          <th>
+            Единицы измерения
+          </th>
+          <th style="width: 56px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ch of getProductCharacteristics(); let idx = index">
+          <td>
+            {{ch.characteristicName}}
+          </td>
+          <td>
+            <input [(ngModel)]="ch.value" />
+          </td>
+          <td *ngIf="ch.unit">
+            {{ch.unit}}
+          </td>
+          <td *ngIf="!ch.unit">
+            ------
+          </td>
+          <td>
+            <div class="ch-buttons-wrapper">
+
+              <div class="button-delete"
+                   (click)="deleteCharacteristic(idx)">
+                <img src="assets/delete.png">
+              </div>
+
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="addingCharacteristic">
+          <td>
+            <ng-select [items]="notExistingCharacteristics"
+                       bindLabel="name"
+                       bindValue="id"
+                       [clearable]="false"
+                       [searchable]="false"
+                       (change)="addedChChanged($event)"
+                       [(ngModel)]="product.characteristics[product.characteristics.length - 1].characteristicId">
+            </ng-select>
+          </td>
+          <td>
+            <input [(ngModel)]="product.characteristics[product.characteristics.length - 1].value" />
+          </td>
+          <td>
+            {{product.characteristics[product.characteristics.length - 1].unit}}
+          </td>
+          <td>
+            <div class="ch-buttons-wrapper">
+
+              <div class="button-delete mr"
+                   (click)="acceptCharacteristics()">
+                <img src="assets/accept.svg">
+              </div>
+
+              <div class="button-delete"
+                   (click)="undoCharacteristics()">
+                <img src="assets/delete.png">
+              </div>
+
+            </div>
+          </td>
+        </tr>
+        <tr class="{{ addingCharacteristic ? 'hidden' : '' }}">
+          <td colspan="4">
+            <div class="button"
+                 (click)="addCharacteristic()">
+              Добавить характеристику
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="buttons-wrapper">
+    <div class="button"
+         (click)="cancel()">
+      Отменить
+    </div>
+    <div class="button"
+         (click)="confirm()">
+      Сохранить
+    </div>
+  </div>
+</div>
+
+<div class="success-edited"
+     *ngIf="edited">
+  Товар изменен!
+</div>
+
+<div class="error-text"
+     *ngIf="error">
+  Не удалось выполнить операцию! Проверьте данные или повторите попытку позже!
+</div>

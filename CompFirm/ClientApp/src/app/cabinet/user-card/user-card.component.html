@@ -1,0 +1,17 @@
+<app-loader [isSearch]="isLoading">
+  <div *ngIf="!!userInfo">
+    <div>
+      <div>Здравствуйте,<br />{{getUserFio()}} ({{userInfo.login}})!</div>
+      <div class="phone">Ваш телефон: {{userInfo.phone}}</div>
+    </div>
+    <div class="button"
+         (click)="navigateToEditUserCard()">
+      Редактировать данные
+    </div>
+    <div class="button"
+         *ngIf="userInfo.isAdmin"
+         (click)="goToAdministration()">
+      Перейти в администрирование
+    </div>
+  </div>
+</app-loader>

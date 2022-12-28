@@ -1,0 +1,53 @@
+:host {
+  .filter {
+    margin-bottom: 17px;
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      padding: 5px 0;
+
+      .input-name {
+        width: 180px;
+      }
+
+      input {
+        width: 350px;
+      }
+    }
+
+
+    .button {
+      margin-top: 17px;
+    }
+  }
+
+  table {
+    width: 100%;
+    margin-top: 17px;
+
+    tbody {
+
+      tr {
+
+        td {
+          padding-top: 5px;
+          padding-bottom: 5px;
+
+          &:first-child {
+            padding-left: 7px;
+          }
+        }
+      }
+
+      tr:hover {
+        box-shadow: 0px 0px 17px 4px rgba(34, 60, 80, 0.3);
+        cursor: pointer;
+        border-radius: 30px;
+      }
+
+      tr:not(:last-child) {
+      }
+    }
+  }
+}

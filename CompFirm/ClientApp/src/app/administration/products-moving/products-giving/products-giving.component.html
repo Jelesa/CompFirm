@@ -1,0 +1,60 @@
+<div class="filter">
+  <div class="input-wrapper">
+    <div class="input-name">
+      Дата:
+    </div>
+    <div class="input d-flex">
+      <input [(ngModel)]="dateFrom"><div style="padding: 0 10px;">-</div><input [(ngModel)]="dateTo">
+    </div>
+  </div>
+
+  <div>
+    <div class="button"
+         style="margin-top: 17px"
+         (click)="search()">
+      Найти
+    </div>
+  </div>
+</div>
+
+<div class="data">
+  <div>
+    <table *ngIf="productsMoving && productsMoving.length > 0">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Наименование продукта</th>
+          <th>Количество</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of productsMoving">
+          <td>{{p.actionDate}}</td>
+          <td>{{p.productName}}</td>
+          <td>{{p.count}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!productsMoving || productsMoving.length === 0">
+      <h5>Выдачи товаров пока не было</h5>
+    </div>
+  </div>
+
+  <div class="pages-buttons-wrapper navigate-pages">
+    <div class="button"
+         (click)="prevPage()"
+         [ngClass]="{ 'button-disabled': pageNumber === 0 }">
+      Предыдущая
+    </div>
+    <div>
+      Страница {{pageNumber + 1}} из {{pageCount}}
+    </div>
+    <div class="button"
+         (click)="nextPage()"
+         [ngClass]="{ 'button-disabled': pageNumber === pageCount - 1 }">
+      Следующая
+    </div>
+  </div>
+</div>

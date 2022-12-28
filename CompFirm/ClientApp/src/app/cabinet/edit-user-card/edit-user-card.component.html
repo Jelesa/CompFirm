@@ -1,0 +1,67 @@
+<div [formGroup]="editUserForm">
+  <div class="input-wrapper">
+    <div class="input-name">
+      Фамилия:
+    </div>
+    <div class="input">
+      <input formControlName="surname">
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Имя:
+    </div>
+    <div class="input">
+      <input formControlName="name">
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Отчество:
+    </div>
+    <div class="input">
+      <input formControlName="patronymic">
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Пароль:
+    </div>
+    <div class="input">
+      <input type="password" formControlName="password">
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="input-name">
+      Новый пароль:
+    </div>
+    <div class="input">
+      <input type="password" formControlName="newPassword">
+    </div>
+  </div>
+
+  <div>
+    <div class="button"
+         (click)="confirm()">
+      Сохранить
+    </div>
+    <div class="button"
+         (click)="cancel()">
+      Отменить
+    </div>
+  </div>
+</div>
+
+<div class="success-edited"
+     *ngIf="edited">
+  Группа успешно изменена!.
+</div>
+
+<div class="error-text"
+     *ngIf="error">
+  Не удалось выполнить операцию! Проверьте данные или повторите попытку позже!
+</div>

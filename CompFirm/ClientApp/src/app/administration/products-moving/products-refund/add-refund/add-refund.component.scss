@@ -1,0 +1,70 @@
+:host {
+
+  table {
+    width: 100%;
+
+    th.count {
+      width: 250px;
+    }
+
+    th.actions {
+      width: 60px;
+    }
+
+    td.count {
+      input {
+        width: 250px;
+      }
+    }
+
+    td, th {
+      padding: 5px;
+      border: 1px solid;
+    }
+  }
+
+  .button {
+    margin-top: 17px;
+  }
+
+  .ch-buttons-wrapper {
+    display: flex;
+    justify-content: space-around;
+
+    img {
+      width: 15px;
+    }
+
+    .button-edit {
+      cursor: pointer;
+      margin-right: 7px;
+    }
+
+    .button-delete {
+      cursor: pointer;
+    }
+  }
+
+  .input-wrapper {
+    display: flex;
+
+    .input-name {
+        width: 200px;
+    }
+  }
+
+  .table {
+    margin-top: 20px;
+  }
+
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+
+    .button {
+      width: 250px;
+    }
+  }
+}
